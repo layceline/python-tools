@@ -1,3 +1,4 @@
+import logging
 from kafka import KafkaProducer
 
 
@@ -17,9 +18,9 @@ class KafkaOutput:
         self.producer = KafkaProducer(bootstrap_servers=self.bootstrap_servers)
 
     def send_data(self, msg):
-        self.producer.send(self.topic, msg.encode("UTF-8")).add_callback(self.on_send_success())
+        self.producer.send(self.topic, msg.encode("UTF-8")).add_callback(self.on_send_success)
 
-    def on_send_success(self):
+    def on_send_success(self, msg):
         self.counter += 1
 
     def end(self):
