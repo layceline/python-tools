@@ -1,5 +1,5 @@
 import sys
-import filecmp
+
 
 def read_file(filename):
     line_list = []
@@ -8,9 +8,10 @@ def read_file(filename):
             line_list.append(line)
     return line_list
 
+
 def has_duplicates(list_to_check):
-    return len(left_list) != len(set(left_list))
-        
+    return len(list_to_check) != len(set(list_to_check))
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -22,10 +23,10 @@ if __name__ == "__main__":
 
     left_list = read_file(left_file)
     right_list = read_file(right_file)
-   
+
     if has_duplicates(left_list):
         print("Found duplicates in file: " + left_file)
-    
+
     if has_duplicates(right_list):
         print("Found duplicates in file: " + right_file)
 

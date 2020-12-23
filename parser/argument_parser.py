@@ -8,7 +8,7 @@ class ArgumentParser:
         self.required = self.parser.add_argument_group("required arguments")
 
     def add_required_argument(self, option_short, option_long, option_help):
-        self.required.add_argument(option_short, option_long, help=option_help)
+        self.required.add_argument(option_short, option_long, help=option_help, required=True)
 
     def add_optional_argument(self, option_short, option_long, option_help):
         self.required.add_argument(option_short, option_long, help=option_help)

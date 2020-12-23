@@ -23,9 +23,11 @@ Output NOK:
     The following words are missing: ['help', 'world', 'test']
 """
 
+
 def is_present(word, filename):
     sub_re = "\[?" + word + "\W*"
     return re.search("\s" + sub_re + "\s|\s" + sub_re + "$|^" + sub_re + "\s|^" + sub_re + "$", open(filename).read())
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
@@ -36,9 +38,9 @@ if __name__ == "__main__":
     list_words_file = sys.argv[2]
     filename = sys.argv[3]
 
-    with open(list_words_file,'r') as f:
+    with open(list_words_file, 'r') as f:
         list_words_string = f.read()
- 
+
     list_words = list_words_string.split(separator)
 
     not_present_counter = 0
@@ -50,10 +52,9 @@ if __name__ == "__main__":
             not_present_counter += 1
             not_present_words.append(word)
             print(word + " not present in " + filename)
-    
+
     if not_present_counter > 0:
         print("NOT OK")
         print("The following words are missing: " + str(not_present_words))
     else:
         print("OK")
-
